@@ -142,6 +142,7 @@ namespace GittiGidiyorTestAutomation.Page
         }
 
 
+
         public void CloseSubscriptionPopUp()
         {
             Click(BtnCloseSubscription);
