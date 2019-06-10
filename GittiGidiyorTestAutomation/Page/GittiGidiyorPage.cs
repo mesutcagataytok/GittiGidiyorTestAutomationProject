@@ -55,7 +55,6 @@ namespace GittiGidiyorTestAutomation.Page
         [FindsBy(How = How.Id, Using = "buyitnow_adet")]
         public IWebElement SlctAmount { get; set; }
 
-
         [FindsBy(How = How.Id, Using = "add-to-basket")]
         public IWebElement BtnBasket { get; set; }
 
@@ -91,6 +90,7 @@ namespace GittiGidiyorTestAutomation.Page
 
         [FindsBy(How = How.Id, Using = "P-PayViaBKM")]
         public IWebElement BtnPayMethod { get; set; }
+
 
 
         public GittiGidiyorPage(IWebDriver webDriver)
@@ -140,7 +140,6 @@ namespace GittiGidiyorTestAutomation.Page
         {
             return (IJavaScriptExecutor)Base.Driver;
         }
-
 
 
         public void CloseSubscriptionPopUp()
