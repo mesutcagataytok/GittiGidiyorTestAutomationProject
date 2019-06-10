@@ -1,4 +1,5 @@
-# SeleniumTestAutomationExample
-GittiGidiyor sitesinin alışveriş sürecinin Selenium ve SpecFlow ile otomasyonu
+# GittiGidiyorTestAutomationProject
+GittiGidiyor e-ticaret sitesi Visual Studio ile Specflow kullanılarak test edilmiştir.
 
-Testlerin çalışabilmesi için SpecFlow feature dosyasındaki parametrelerin düzeltilmesi gerekmektedir.
+Projede Moda kategorisiden erkek ayakkabı alınarak ödeme işlemine kadar gidilmiştir.
+
