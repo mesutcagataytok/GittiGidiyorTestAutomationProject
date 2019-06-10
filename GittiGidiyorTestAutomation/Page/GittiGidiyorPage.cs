@@ -92,12 +92,56 @@ namespace GittiGidiyorTestAutomation.Page
         [FindsBy(How = How.Id, Using = "P-PayViaBKM")]
         public IWebElement BtnPayMethod { get; set; }
 
+
         public GittiGidiyorPage(IWebDriver webDriver)
         {
             Base.Driver = webDriver;
             PageFactory.InitElements(Driver, this);
-
         }
+
+        public IWebElement Find(By by)
+        {
+            return Base.Driver.FindElement(by);
+        }
+
+        public void Click(IWebElement btn)
+        {
+            WebDriverWait wait = new WebDriverWait(Base.Driver, TimeSpan.FromSeconds(30));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(btn));
+            btn.Click();
+        }
+
+        public void Hover(IWebElement btn)
+        {
+            Actions action = new Actions(Base.Driver);
+            action.MoveToElement(btn).Build().Perform();
+        }
+
+        public void SetText(IWebElement txt, string text)
+        {
+            txt.SendKeys(text);
+        }
+        
+        public void SelectOptionByText(IWebElement slct, string text)
+        {
+            SelectElement selectElement = new SelectElement(slct);
+            selectElement.SelectByText(text);
+            WebDriverWait wait = new WebDriverWait(Base.Driver, TimeSpan.FromSeconds(20));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(slct, text));
+        }
+
+        public void ScrollTo(IWebElement el)
+        {
+            string jsStmt = String.Format("window.scrollTo({0},{1})", el.Location.X, el.Location.Y);
+            GetScriptExecutor().ExecuteScript(jsStmt, true);
+        }
+
+        public IJavaScriptExecutor GetScriptExecutor()
+        {
+            return (IJavaScriptExecutor)Base.Driver;
+        }
+
+
 
         public void CloseSubscriptionPopUp()
         {
@@ -135,17 +179,6 @@ namespace GittiGidiyorTestAutomation.Page
             Click(BtnAyakkabi);
         }
 
-        public void ClickFilterLeft()
-        {
-            ScrollTo(ChkFilterEldiven);
-            Click(ChkFilterEldiven);
-        }
-
-        public void ClickFilterTop()
-        {
-            Click(ChkFilterKargo);
-        }
-
         public void ClickFirstItem()
         {
             Click(BtnFirstItem);
@@ -160,20 +193,24 @@ namespace GittiGidiyorTestAutomation.Page
         {
             SelectOptionByText(SlctSize, size);
         }
+        
         public void ChooseColor(string color)
         {
             SelectOptionByText(SlctColor, color);
         }
+        
         public void EnterAmount(string amount)
         {
             SlctAmount.Clear();
             SetText(SlctAmount, amount);
         }
+        
         public void ClickAddToBasket()
         {
             ScrollTo(BtnBasket);
             Click(BtnBasket);
         }
+        
         public void ClickPay()
         {
             Click(BtnPay);
@@ -218,6 +255,7 @@ namespace GittiGidiyorTestAutomation.Page
         {
             Click(BtnSaveAndContinue);
         }
+        
         public void ClickContinue()
         {
             Click(BtnContinue);
@@ -228,45 +266,5 @@ namespace GittiGidiyorTestAutomation.Page
             Click(BtnPayMethod);
         }
 
-        public IWebElement Find(By by)
-        {
-            return Base.Driver.FindElement(by);
-        }
-
-        public void Click(IWebElement btn)
-        {
-            WebDriverWait wait = new WebDriverWait(Base.Driver, TimeSpan.FromSeconds(30));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(btn));
-            btn.Click();
-        }
-
-        public void Hover(IWebElement btn)
-        {
-            Actions action = new Actions(Base.Driver);
-            action.MoveToElement(btn).Build().Perform();
-        }
-
-        public void SetText(IWebElement txt, string text)
-        {
-            txt.SendKeys(text);
-        }
-        public void SelectOptionByText(IWebElement slct, string text)
-        {
-            SelectElement selectElement = new SelectElement(slct);
-            selectElement.SelectByText(text);
-            WebDriverWait wait = new WebDriverWait(Base.Driver, TimeSpan.FromSeconds(20));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(slct, text));
-        }
-
-        public void ScrollTo(IWebElement el)
-        {
-            string jsStmt = String.Format("window.scrollTo({0},{1})", el.Location.X, el.Location.Y);
-            GetScriptExecutor().ExecuteScript(jsStmt, true);
-        }
-
-        public IJavaScriptExecutor GetScriptExecutor()
-        {
-            return (IJavaScriptExecutor)Base.Driver;
-        }
     }
 }
