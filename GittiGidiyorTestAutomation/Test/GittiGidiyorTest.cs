@@ -67,26 +67,8 @@ namespace GittiGidiyorTestAutomation.Test
         {
             gittiGidiyorPage.HoverMenuItem();
         }
-
-        /*
-         * 
-	* Menüden Erkek Ayakkabı kategorisi seçilir
-	* İlk ürün seçilir
-	* Numara olarak '44' seçilir
-	* Renk olarak 'Lacivert' seçilir
-	* Adet olarak '1' seçilir
-	* Sepete Ekle butonuna tıklanır
-	* Alışverişi tamamla butonuna tıklanır
-	* Devam Et butonuna tıklanır
-	* Ad alanına 'İsim' yazılır
-	* Soyad alanına 'Soyisim' yazılır
-	* Şehir olarak 'Şehir' seçilir
-	* İlçe olarak 'İlçe' seçilir
-	* Adres alanına 'Adres' yazılır
-	* Telefon-1 alanına '5314455500' yazılır
-	* Kaydet ve Devam Et butonuna tıklanır
-	* Ödeme yöntemi olarak BKM express seçilir
-         * */
+	    
+	    
         [StepDefinition(@"Menüden Erkek Ayakkabı kategorisi seçilir")]
         public void ClickMenu()
         {
